@@ -1,0 +1,31 @@
+server {
+      listen 8082;
+      root   /home/dist;
+
+      location /api {
+        proxy_pass {{api_ip}};
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header REMOTE-HOST $remote_addr;
+        
+        add_header X-Cache $upstream_cache_status;
+    	  add_header Cache-Control no-cache;
+      }
+
+      location = /actuator/health {
+          return 200 "ok";
+      }
+
+      location /static {
+          charset utf-8;
+          root   /home/dist;
+          index  index.html index.html;
+      }
+      location / {
+          charset utf-8;
+          root   /home/dist;
+          index  index.html index.html;
+          try_files $uri /index.html;
+      }
+}
