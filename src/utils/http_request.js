@@ -22,7 +22,7 @@ export default class {
      */
     code = '200';
 
-    //超时时间
+    // 超时时间
     timeout = 10000;
 
     /**
@@ -46,17 +46,17 @@ export default class {
         return headparam || {};
     }
 
-    //检查url是否需要添加前缀
+    // 检查url是否需要添加前缀
     _checkURL(url) {
         if (/^http/.test(url)) return url;
         return this.baseURL + url;
     }
-    //检查code是否正确
+    // 检查code是否正确
     _checkCode(data) {
         if (data.code !== this.code) throw new RError(data.message || '请求失败', data.code);
     }
 
-    //请求方法
+    // 请求方法
     async _fetch(method, url, params, data, responseType = 'json', headparam) {
         const { timeout } = this;
         const headers = await this.setHeads(headparam);
@@ -77,10 +77,10 @@ export default class {
      * @returns
      */
     async get(url, params) {
-        return this._fetch < T > ('GET', url, params);
+        return this._fetch('GET', url, params);
     }
     async get_heads(url, params, heads) {
-        return this._fetch < T > ('GET', url, params, undefined, undefined, heads);
+        return this._fetch('GET', url, params, undefined, undefined, heads);
     }
     /**
      * POST请求
@@ -90,10 +90,10 @@ export default class {
      * @returns
      */
     async post(url, data, params) {
-        return this._fetch < T > ('POST', url, params, data);
+        return this._fetch('POST', url, params, data);
     }
     async post_heads(url, data, params, heads) {
-        return this._fetch < T > ('POST', url, params, data, undefined, heads);
+        return this._fetch('POST', url, params, data, undefined, heads);
     }
     /**
      * PUT请求
@@ -103,7 +103,7 @@ export default class {
      * @returns
      */
     async put(url, data, params) {
-        return this._fetch < T > ('PUT', url, params, data);
+        return this._fetch('PUT', url, params, data);
     }
     /**
      * DELETE请求
@@ -112,6 +112,6 @@ export default class {
      * @returns
      */
     async delete(url, params) {
-        return this._fetch < T > ('DELETE', url, params);
+        return this._fetch('DELETE', url, params);
     }
 }
