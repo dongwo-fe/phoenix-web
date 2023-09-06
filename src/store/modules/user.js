@@ -7,7 +7,6 @@ const getDefaultState = () => {
         token: getToken(),
         name: '',
         avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-        roles: [],
         uidentity: '',
     };
 };
@@ -26,9 +25,6 @@ const mutations = {
     },
     SET_AVATAR: (state, avatar) => {
         state.avatar = avatar;
-    },
-    SET_ROLES: (state, roles) => {
-        state.roles = roles;
     },
     SET_uidentity: (state, uidentity) => {
         state.uidentity = uidentity;
@@ -50,11 +46,10 @@ const actions = {
         if (!data) {
             throw new Error('Verification failed, please Login again.');
         }
-        const { nickname, roles, avatar, username, uidentity } = data;
+        const { nickname, avatar, username, uidentity } = data;
         if (avatar) commit('SET_AVATAR', avatar);
         commit('SET_NAME', nickname || username);
         commit('SET_uidentity', uidentity);
-        commit('SET_ROLES', roles ? roles.split(',') : []);
         return data;
     },
 
@@ -63,16 +58,6 @@ const actions = {
         removeToken(); // must remove  token  first
         commit('RESET_STATE');
         resetRouter();
-        // return new Promise((resolve, reject) => {
-        //   logout(state.token).then(() => {
-        //     removeToken(); // must remove  token  first
-        //     resetRouter();
-        //     commit('RESET_STATE');
-        //     resolve();
-        //   }).catch(error => {
-        //     reject(error);
-        //   });
-        // });
     },
 
     // remove token
