@@ -38,21 +38,6 @@ module.exports = {
         },
         // before: require('./mock/mock-server.js')
         proxy: {
-            '/api_website': {
-                target: 'https://topicsit.jrdaimao.com',
-                changeOrigin: true,
-                secure: false,
-            },
-            '/api_whitelist': {
-                target: 'https://sharesit.jrdaimao.com',
-                changeOrigin: true,
-                secure: false,
-            },
-            '/api_test': {
-                target: 'https://sharesit.jrdaimao.com',
-                changeOrigin: true,
-                secure: false,
-            },
             '/api': {
                 target: 'http://127.0.0.1:8082',
                 changeOrigin: true,
