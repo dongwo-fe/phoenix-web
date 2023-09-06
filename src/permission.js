@@ -32,13 +32,7 @@ router.beforeEach(async (to, from, next) => {
             } else {
                 try {
                     // get user info
-                    // const res = await store.dispatch('user/getInfo');
-                    // if (res) {
-                    //     const arrRoles = res.roles.split(',');
-                    //     await store.dispatch('permission/generateRoutes', arrRoles);
-                    // }
-                    // const resRoles = to.meta.roles ? to.meta.roles.some((r) => store.getters.roles.includes(r)) : true;
-                    // resRoles ? next() : next({ path: '/' });
+                    await store.dispatch('user/getInfo');
                     next();
                 } catch (error) {
                     console.log(error);

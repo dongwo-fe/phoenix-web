@@ -38,6 +38,7 @@ const actions = {
         const data = await login({ username: username.trim(), password: password });
         commit('SET_TOKEN', data.token);
         setToken(data.token);
+        commit('SET_uidentity', data.uidentity);
     },
 
     // get user info

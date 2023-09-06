@@ -26,42 +26,6 @@ export const routers = [
         ],
     },
     {
-        path: '/project/index',
-        title: '项目列表',
-        key: 'Project',
-        children: [
-            {
-                path: '/project/add',
-                title: '添加',
-                key: 'Project:a',
-                roles: ['Project:a'],
-            },
-            {
-                path: '/project/edit',
-                title: '编辑',
-                key: 'Project:e',
-                roles: ['Project:e'],
-            },
-            {
-                path: '/project/stop',
-                title: '使用/暂停',
-                key: 'Project:t',
-                roles: ['Project:t'],
-            },
-            {
-                path: '/project/del',
-                title: '删除',
-                key: 'Project:d',
-                roles: ['Project:d'],
-            },
-        ],
-    },
-    {
-        path: '/thirdAuth/index',
-        title: '三方授权',
-        key: 'ThirdAuth',
-    },
-    {
         path: '/user/index',
         title: '用户管理',
         key: 'User',
