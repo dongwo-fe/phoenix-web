@@ -34,7 +34,7 @@
 
             <el-button :loading="loading" type="primary" style="width: 100%; margin-bottom: 30px" @click.native.prevent="handleLogin">登录</el-button>
 
-            <div class="tips" @click="dingdingLogin">钉钉登录</div>
+            <div v-if="client_id.length > 0" class="tips" @click="dingdingLogin">钉钉登录</div>
         </el-form>
     </div>
 </template>
@@ -65,6 +65,7 @@ export default {
             loading: false,
             passwordType: 'password',
             redirect: undefined,
+            client_id: 'dingkvgrodg7q6hygun7', // 填入钉钉的应用id
         };
     },
     watch: {
@@ -109,11 +110,7 @@ export default {
             this.loading = false;
         },
         dingdingLogin() {
-            if (window.location.host !== 'canary.jrdaimao.com') {
-                window.location.href = `https://login.dingtalk.com/oauth2/auth?redirect_uri=https%3A%2F%2F${window.location.host}%2Fapi%2Foauth2%2Fdingding&response_type=code&client_id=dingkvgrodg7q6hygun7&scope=openid&state=&prompt=consent`;
-            } else {
-                window.location.href = `https://login.dingtalk.com/oauth2/auth?redirect_uri=https%3A%2F%2F${window.location.host}%2Fapi%2Foauth2%2Fdingding&response_type=code&client_id=dingmyuhhj3fqrmqw7am&scope=openid&state=&prompt=consent`;
-            }
+            window.location.href = `https://login.dingtalk.com/oauth2/auth?redirect_uri=https%3A%2F%2F${window.location.host}%2Fapi%2Foauth2%2Fdingding&response_type=code&client_id=${this.client_id}&scope=openid&state=&prompt=consent`;
         },
     },
 };

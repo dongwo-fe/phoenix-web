@@ -33,7 +33,7 @@
             </el-form-item>
 
             <el-button :loading="loading" type="primary" style="width: 100%; margin-bottom: 30px" @click.native.prevent="handleLogin">登录</el-button>
-            <div class="tips" @click="dingdingLogin">钉钉登录</div>
+            <div v-if="client_id.length > 0" class="tips" @click="dingdingLogin">钉钉登录</div>
         </el-form>
         <div v-show="showDDLogin" id="ddlogin">
             <div class="close" @click="showDDLogin = false"><i class="el-icon-error" /></div>
@@ -70,6 +70,7 @@ export default {
             redirect: undefined,
             showDDLogin: false,
             ddloginUrl: '',
+            client_id: '',
         };
     },
     created() {
@@ -129,12 +130,7 @@ export default {
             }
         },
         dingdingLogin() {
-            // this.ddloginUrl = 'http://bing.com';
-            if (window.location.host !== 'canary.jrdaimao.com') {
-                this.ddloginUrl = `https://login.dingtalk.com/oauth2/auth?redirect_uri=https%3A%2F%2F${window.location.host}%2Fapi%2Foauth2%2Fdingding_in&response_type=code&client_id=dingkvgrodg7q6hygun7&scope=openid&state=&prompt=consent`;
-            } else {
-                this.ddloginUrl = `https://login.dingtalk.com/oauth2/auth?redirect_uri=https%3A%2F%2F${window.location.host}%2Fapi%2Foauth2%2Fdingding_in&response_type=code&client_id=dingmyuhhj3fqrmqw7am&scope=openid&state=&prompt=consent`;
-            }
+            this.ddloginUrl = `https://login.dingtalk.com/oauth2/auth?redirect_uri=https%3A%2F%2F${window.location.host}%2Fapi%2Foauth2%2Fdingding_in&response_type=code&client_id=${this.client_id}&scope=openid&state=&prompt=consent`;
             this.showDDLogin = true;
         },
     },
