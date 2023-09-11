@@ -32,8 +32,8 @@ import moment from 'moment';
 
 const websiteType = [
     { key: 0, label: '全量' },
-    { key: 1, label: '灰度' },
-    { key: 2, label: '白名单' },
+    // { key: 1, label: '灰度' },
+    // { key: 2, label: '白名单' },
     // { key: 3, label: '体验版' },
 ];
 
