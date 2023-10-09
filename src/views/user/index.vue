@@ -27,7 +27,7 @@
             <el-table-column label="操作" align="left" class-name="small-padding fixed-width">
                 <template slot-scope="{ row }">
                     <el-button type="primary" size="mini" @click="handleAdd(row)"> 编辑 </el-button>
-                    <el-button size="mini" type="success" @click="setAuthority(row)"> 菜单权限 </el-button>
+                    <!-- <el-button size="mini" type="success" @click="setAuthority(row)"> 菜单权限 </el-button> -->
                     <el-button v-if="row.status !== 1" v-permission="['User:t']" size="mini" @click="handleModifyStatus(row, 1)"> 启用 </el-button>
                     <el-button v-else-if="row.status !== 0" v-permission="['User:t']" size="mini" @click="handleModifyStatus(row, 0)"> 禁用 </el-button>
                     <!-- v-if="row.status!==1" -->
